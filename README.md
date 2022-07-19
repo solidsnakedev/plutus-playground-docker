@@ -3,6 +3,7 @@
 This guide will show you how to compile and install plutus playground` using Docker container, directly from the source-code.
 ```
 week01
+41149926c108c71831cfe8d244c83b0ee4bf5c8a
 
 week02
 6aff97d596ac9d59460aab5c65627b1c8c0a1528
