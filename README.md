@@ -1,6 +1,8 @@
 # Installing plutus playground using Docker container
 ## Overview
 This guide will show you how to compile and install plutus playground` using Docker container, directly from the source-code.
+
+## 1. Copy one of the git commits 
 ```
 week01
 41149926c108c71831cfe8d244c83b0ee4bf5c8a
@@ -32,6 +34,8 @@ week09
 week10
 14bed17e8608162ee81969e482c1815fb78bd7b0
 ```
+*Note: commits are taken from cabal project file of each week https://github.com/input-output-hk/plutus-pioneer-program/blob/main/code/week01/cabal.project*
+![Alt text](./cabal-project-example.png "a title")
 
 ```
 DOCKER_BUILDKIT=1 docker build --build-arg GIT_COMMIT=41149926c108c71831cfe8d244c83b0ee4bf5c8a -t plutus-playground .
