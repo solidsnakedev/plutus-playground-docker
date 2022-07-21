@@ -1,0 +1,6 @@
+services:
+  plutus-playground-container:
+    build: .
+    image: plutus-playground
+    ports:
+      - 8009:8009

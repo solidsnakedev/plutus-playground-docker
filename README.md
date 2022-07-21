@@ -1,10 +1,10 @@
 # Installing plutus playground using Docker container
 ## Overview
-This guide will show you how to compile and install plutus playground` using Docker container, directly from the source-code.
+This guide will show you how to compile and install plutus playground using Docker.
 
-## 1. Copy one of the git commits
+## 1. Copy one of the `GIT_TAG`
 
-| **Weeks** | **Git commits**                          |
+| **Week** | **GIT_TAG**                          |
 |-----------|------------------------------------------|
 | Week01    | 41149926c108c71831cfe8d244c83b0ee4bf5c8a |
 | Week02    | 6aff97d596ac9d59460aab5c65627b1c8c0a1528 |
@@ -17,26 +17,29 @@ This guide will show you how to compile and install plutus playground` using Doc
 | Week09    | 400318e0976b82e0ba7692edf26d93293589c671 |
 | Week10    | 14bed17e8608162ee81969e482c1815fb78bd7b0 |
 
-*Note: commits are taken from cabal project file of each week*
+>Note: commits are taken from cabal project file of each week
 
-*Please refer to the following link as an example:*
+>Please refer to the following link as an example:
 
 https://github.com/input-output-hk/plutus-pioneer-program/blob/main/code/week01/cabal.project
 
 ![Alt text](./cabal-project-example.png)
 
 ## 2. Building plutus playground image
-*Here we copied week01 `41149926c108c71831cfe8d244c83b0ee4bf5c8a`*
 ```
-DOCKER_BUILDKIT=1 docker build --build-arg GIT_COMMIT=41149926c108c71831cfe8d244c83b0ee4bf5c8a -t plutus-playground .
+DOCKER_BUILDKIT=1 docker compose build --build-arg GIT_TAG=<GIT_TAG> 
 ```
+*Where <GIT_TAG> is, for example week01 &rarr; `41149926c108c71831cfe8d244c83b0ee4bf5c8a`*
+>:hourglass_flowing_sand: Building time is around 20 mins 
 
 ## 3. Running container
 
 ```
-docker run -d -p 8009:8009 plutus-playground
+docker compose up -d
 ```
+>:hourglass_flowing_sand: Getting plutus playground up and running is around 10 mins
 
 ## 4. Plutus Playground website
-
-http://localhost:8009/
+```
+https://localhost:8009/
+```

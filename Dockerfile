@@ -20,14 +20,13 @@ RUN echo "substituters        = https://hydra.iohk.io https://iohk.cachix.org ht
 USER cardano
 ENV USER=cardano
 WORKDIR /home/cardano
-ARG GIT_COMMIT
+ARG GIT_TAG
 
 RUN curl -L https://nixos.org/nix/install | sh
 
 RUN git clone https://github.com/input-output-hk/plutus-apps.git
 WORKDIR /home/cardano/plutus-apps
-#RUN git checkout 41149926c108c71831cfe8d244c83b0ee4bf5c8a
-RUN git checkout ${GIT_COMMIT}
+RUN git checkout ${GIT_TAG}
 
 ENV PATH="/home/cardano/.nix-profile/bin:${PATH}"
 RUN echo ". /home/cardano/.nix-profile/etc/profile.d/nix.sh" >> /home/cardano/.bashrc
@@ -38,6 +37,3 @@ COPY ./run-plutus-playground.sh /home/cardano
 RUN sudo /bin/bash -c "chmod +x /home/cardano/run-plutus-playground.sh"
 
 CMD ["bash", "-c", "~/run-plutus-playground.sh"]
-
-#DOCKER_BUILDKIT=1 docker build --build-arg GIT_COMMIT=41149926c108c71831cfe8d244c83b0ee4bf5c8a -t plutus-apps .
-#docker run -d -p 8009:8009 plutus-apps
