@@ -2,6 +2,27 @@
 ## Overview
 This guide will show you how to compile and install plutus playground using Docker.
 
+## Prerequisites
+1. Install `docker desktop` which includes `docker engine` and `docker compose`
+    https://docs.docker.com/desktop/#download-and-install
+2. Verify installation
+```
+❯  docker compose version
+Docker Compose version v2.6.0
+
+❯  docker --version
+Docker version 20.10.17, build 100c701
+
+❯  docker version
+Client: Docker Engine - Community
+ Version:           20.10.17
+ API version:       1.41
+ Go version:        go1.17.11
+ Git commit:        100c701
+ ...
+   ```
+
+
 ## 1. Copy one of the `GIT_TAG`
 
 | **Week** | **GIT_TAG**                          |
