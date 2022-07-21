@@ -52,14 +52,14 @@ DOCKER_BUILDKIT=1 docker compose build --build-arg GIT_TAG=<GIT_TAG>
 ```
 >Where <GIT_TAG> is, for example week01 &rarr; `41149926c108c71831cfe8d244c83b0ee4bf5c8a`
 
->:hourglass_flowing_sand: Building time is around 20 mins 
+>:hourglass_flowing_sand: wait for ~20 mins 
 
 ## 3. Running container
 
 ```
 docker compose up -d
 ```
->:hourglass_flowing_sand: Getting plutus playground up and running is around 10 mins
+>:hourglass_flowing_sand: wait for ~10 mins
 
 ## 4. Plutus Playground website
 ```
