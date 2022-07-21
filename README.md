@@ -30,6 +30,7 @@ https://github.com/input-output-hk/plutus-pioneer-program/blob/main/code/week01/
 DOCKER_BUILDKIT=1 docker compose build --build-arg GIT_TAG=<GIT_TAG> 
 ```
 >Where <GIT_TAG> is, for example week01 &rarr; `41149926c108c71831cfe8d244c83b0ee4bf5c8a`
+
 >:hourglass_flowing_sand: Building time is around 20 mins 
 
 ## 3. Running container
