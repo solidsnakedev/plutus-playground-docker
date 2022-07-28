@@ -1,7 +1,7 @@
 FROM ubuntu
 # Install dependencies
 RUN apt-get update -y
-RUN apt-get install wget git curl tar xz-utils sudo -y
+RUN apt-get install wget git curl tar xz-utils sudo build-essential curl libffi-dev libffi8ubuntu1 libgmp-dev libgmp10 libncurses-dev libncurses5 libtinfo5 -y
 #create the user's home directory and login shell of the new account
 RUN useradd -m -s /bin/bash cardano
 #append the user to the supplemental GROUPS and new list of supplementary GROUPS
@@ -20,6 +20,17 @@ RUN echo "substituters        = https://hydra.iohk.io https://iohk.cachix.org ht
 USER cardano
 ENV USER=cardano
 WORKDIR /home/cardano
+
+# Install GHC version 8.10.4 and Cabal
+RUN curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | BOOTSTRAP_HASKELL_NONINTERACTIVE=1 BOOTSTRAP_HASKELL_MINIMAL=1 sh
+ENV PATH="/home/cardano/.cabal/bin:/home/cardano/.ghcup/bin:$PATH"
+RUN ghcup upgrade && \
+    ghcup install cabal 3.6.2.0 && \
+    ghcup set cabal 3.6.2.0 && \
+    ghcup install ghc 8.10.7 && \
+    ghcup set ghc 8.10.7 && \
+    ghcup install hls
+
 ARG GIT_TAG
 
 RUN curl -L https://nixos.org/nix/install | sh
