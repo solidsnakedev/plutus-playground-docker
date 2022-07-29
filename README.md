@@ -6,7 +6,7 @@ This guide will show you how to compile and install plutus playground using Dock
 
 ## Prerequisites
 
-1. Install `docker desktop` which includes `docker engine` and `docker compose` https://docs.docker.com/desktop/#download-and-install
+1. Install `docker desktop` which includes <mark style="color:green;">docker engine</mark> and <mark style="color:green;">docker compose</mark> https://docs.docker.com/desktop/#download-and-install
 2. Verify installation
 
 ```bash
