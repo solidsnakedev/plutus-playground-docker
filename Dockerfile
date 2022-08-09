@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:rolling
 # Install dependencies
 RUN apt-get update -y
 RUN apt-get install wget git curl tar xz-utils sudo build-essential curl libffi-dev libffi8ubuntu1 libgmp-dev libgmp10 libncurses-dev libncurses5 libtinfo5 -y
@@ -31,10 +31,12 @@ RUN ghcup upgrade && \
     ghcup set ghc 8.10.7 && \
     ghcup install hls
 
-ARG GIT_TAG
 
 RUN curl -L https://nixos.org/nix/install | sh
 
+RUN git clone https://github.com/input-output-hk/plutus-pioneer-program.git
+
+ARG GIT_TAG
 RUN git clone https://github.com/input-output-hk/plutus-apps.git
 WORKDIR /home/cardano/plutus-apps
 RUN git checkout ${GIT_TAG}
