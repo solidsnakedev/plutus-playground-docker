@@ -3,5 +3,8 @@ services:
     build: .
     image: plutus-playground
     container_name: plutus-playground-container
+    volumes:
+      - ./projects/:/home/cardano/projects
     ports:
       - 8009:8009
+      - 8002:8002
