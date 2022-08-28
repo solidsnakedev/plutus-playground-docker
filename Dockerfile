@@ -34,9 +34,15 @@ RUN ghcup upgrade && \
     ghcup set ghc 8.10.7 && \
     ghcup install hls
 
+# Install Nix
+RUN curl -L https://nixos.org/nix/install | sh
+# Set binaries path for nix
+ENV PATH="/home/cardano/.nix-profile/bin:${PATH}"
+# Adding nix bash file
+RUN echo ". /home/cardano/.nix-profile/etc/profile.d/nix.sh" >> /home/cardano/.bashrc
+
 # Clone plutus-pioneer-progam
 RUN git clone https://github.com/input-output-hk/plutus-pioneer-program.git
-
 # GIT_TAG Variable from docker compose build command
 ARG GIT_TAG
 # Clone plutus-apps
@@ -45,13 +51,6 @@ RUN git clone https://github.com/input-output-hk/plutus-apps.git
 WORKDIR /home/cardano/plutus-apps
 # Checkout to GIT_TAG
 RUN git checkout ${GIT_TAG}
-
-# Install Nix
-RUN curl -L https://nixos.org/nix/install | sh
-# Set binaries path for nix
-ENV PATH="/home/cardano/.nix-profile/bin:${PATH}"
-# Adding nix bash file
-RUN echo ". /home/cardano/.nix-profile/etc/profile.d/nix.sh" >> /home/cardano/.bashrc
 # Run nix-shell to compile all the packages
 RUN nix-shell
 
