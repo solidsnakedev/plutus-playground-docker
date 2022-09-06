@@ -53,6 +53,11 @@ https://github.com/input-output-hk/plutus-pioneer-program/blob/main/code/week01/
 ```bash
 DOCKER_BUILDKIT=1 docker compose build --build-arg GIT_TAG=<GIT_TAG> 
 ```
+or
+Build stable plutus version
+```
+DOCKER_BUILDKIT=1 docker compose build --build-arg GIT_TAG=v0.1.0
+```
 
 > Where \<GIT\_TAG> is, for example week01 →<mark style="color:green;">41149926c108c71831cfe8d244c83b0ee4bf5c8a</mark>
 
@@ -68,6 +73,7 @@ docker compose up -d
 
 ## 4. Plutus Playground website
 
-```http
+```
 https://localhost:8009/
+http://localhost:8002/haddock
 ```
