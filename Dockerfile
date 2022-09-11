@@ -57,9 +57,22 @@ RUN nix-shell
 # Exposing the website outside of the container, from localhost to 0.0.0.0
 RUN sed -i -e "s/port: 8009/host: '0.0.0.0',\n        port: 8009/g" /home/cardano/plutus-apps/plutus-playground-client/webpack.config.js
 
+# Change workind directory
+WORKDIR /home/cardano
+
+# Set GHCI
+RUN git clone https://github.com/solidsnakedev/cabal-repl-color.git && \
+    sudo ln cabal-repl-color/cabal-repl-color.sh /usr/local/bin && \
+    chmod +x /usr/local/bin/cabal-repl-color.sh
+
+ADD .ghci /home/cardano
+
 # Adding script to run plutus playground
 COPY ./run-plutus-playground.sh /bin
 RUN sudo /bin/bash -c "chmod +x /bin/run-plutus-playground.sh"
 
+# Change workind directory
+WORKDIR /home/cardano/plutus-apps
+
 # Run script when launching plutus playground container
-CMD ["bash","run-plutus-playground.sh"]
+CMD ["run-plutus-playground.sh"]
